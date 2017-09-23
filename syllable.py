@@ -1,3 +1,23 @@
+def syllabify(word):
+	syllables = []
+	vowels = 'aeiouy'
+	words = word.lower().strip('.:?!').split(" ")
+        for i in range(0, len(words)):
+                tmp = []
+		track = 0
+                word = words[i]
+                if word[0] in vowels:
+			track += 1
+			while word[track] not in vowels:
+				track = track +  1
+				print track
+				if track == len(word):
+					break
+			print track	
+			syllables.append(word[0: track + 1])
+	return syllables 
+
+
 def syllables(word):
 	syl = 0
 	vowels = 'aeiouy' #I know that y technically isn't a vowel
@@ -21,4 +41,4 @@ def syllables(word):
 		syl += tmp
 	return syl
 import sys
-print( syllables(sys.argv[1]) )
+print( syllabify(sys.argv[1]) )
