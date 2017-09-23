@@ -8,7 +8,7 @@ def syllables(word):
 		if word[0] in vowels:
 			tmp += 1
 		for i in range(1, len(word)):
-			if (word[i] == 'a' and word[i-1] == 'i') or (word[i] in vowels and word[i-1] not in vowels) or (word[i] == 'i' and word[i-1] == 'u'):
+			if ((word[i] == 'a'or word[i] == 'o') and word[i-1] == 'i') or (word[i] in vowels and word[i-1] not in vowels) or (word[i] == 'i' and (word[i-1] == 'u')):
 				tmp += 1	
 		if word[len(word) - 1] == 'e' and not word[len(word) - 2] == 'l':
 			tmp -= 1
