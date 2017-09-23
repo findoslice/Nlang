@@ -12,6 +12,8 @@ def syllables(word):
 				tmp += 1	
 		if word[len(word) - 1] == 'e' and not word[len(word) - 2] == 'l':
 			tmp -= 1
+		if word[len(word) -2] == 'e' and (word[len(word)-1] == 'd' or word[len(word)-1] == 's'):
+			tmp -=1
 		if word[len(word)-2] == 's' and word[len(word)-1] == 'm':
 			tmp += 1
 		if tmp == 0:
