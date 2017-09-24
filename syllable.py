@@ -5,39 +5,30 @@ def syllabify(word):
 	words = word.lower().strip('.:?!').split(" ")
         for i in range(0, len(words)):
                 tmp = []
-                word = words[i]
-		for j in range(0, len(word)):
-			print('a')
-			if word[j] in vowels and not j == len(word):
-				print('b')
-                        	track = j+1
+                word = words[i]						# isolate word
+		track = 0
+		if word[0] not in vowels:				#check if first letter isn't a vowel, this requires special case
+			for j in range (len(word)):
+				if word[j] in vowels:
+					for k in range(j+1, len(word)):
+						if word[k] in vowels:
+							tmp.append(word[:k])
+							break
+						else:
+							pass	
 
+
+				#tmp.append(:(j+1))
+					
+						
+					break
+				else:
+					pass
+			
 				
-				while word[track] not in vowels:
-                                        print('c')
-                                        track = track +  1
-                                        print track
-                                        if track == len(word)-1 and word[track] in vowels:
-                                                tmp.append(word[track])
-                                                break
-                                        elif word[track] in vowels:
-                                                tmp.append(word[j:(track+1)])
-                                                break
-			else:
-				print 'd'
-
-
-
-#                        	while word[track-1] not in vowels:
- #                               	print('c')
-#					track = track +  1
- #                               	print track
-  #                              	if track == len(word)-1 and word[track] in vowels:
-#						tmp.append(word[track])
-#						break
-#					elif word[track] in vowels:
-#						tmp.append(word[j:(track+1)])
- #                                       	break
+									
+									
+									#if first word is a vowel then primary algorithm works	
 		syllables.append(tmp) 
 	return syllables 
 
