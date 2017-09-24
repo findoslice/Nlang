@@ -4,8 +4,8 @@ def syllabify(word):
 	vowels = 'aeiouy'
 	words = word.lower().strip('.:?!').split(" ")
 	for i in range(0, len(words)):
-    	tmp = []
-        word = words[i]								# isolate word
+    		tmp = []
+     		word = words[i]								# isolate word
 		track = 0
 		if word[0] not in vowels:						#check if first letter isn't a vowel, this requires special case
 			for j in range (len(word)):
@@ -15,7 +15,7 @@ def syllabify(word):
 							track = k
 							tmp.append(word[:k])
 							break
-						elif k == len(word) - 1:		#in case word is monosyllabic and has only one vowel
+						elif (k == len(word) - 1) and tmp == []:		#in case word is monosyllabic and has only one vowel
 							tmp.append(word)
 							pass
 			for j in range(track, len(word)):
