@@ -7,29 +7,38 @@ def syllabify(word):
                 tmp = []
                 word = words[i]
 		for j in range(0, len(word)):
-			if word[j] in vowels:
-                        	track = j + 1
-                        	while word[track] not in vowels:
-                                	track = track +  1
-                                	print track
-                                	if track == len(word)-1 and word[track] in vowels:
-						tmp.append(word[track])
-						break
-					elif word[track] in vowels:
-						tmp.append(word[j:(track+1)])
-                                        	break
+			print('a')
+			if word[j] in vowels and not j == len(word):
+				print('b')
+                        	track = j+1
+
+				
+				while word[track] not in vowels:
+                                        print('c')
+                                        track = track +  1
+                                        print track
+                                        if track == len(word)-1 and word[track] in vowels:
+                                                tmp.append(word[track])
+                                                break
+                                        elif word[track] in vowels:
+                                                tmp.append(word[j:(track+1)])
+                                                break
+			else:
+				print 'd'
 
 
 
-                if word[0] in vowels:
-			track += 1
-			while word[track] not in vowels:
-				track = track +  1
-				print track
-				if track == len(word):
-					break
-			print track	
-			syllables.append(word[0: track + 1])
+#                        	while word[track-1] not in vowels:
+ #                               	print('c')
+#					track = track +  1
+ #                               	print track
+  #                              	if track == len(word)-1 and word[track] in vowels:
+#						tmp.append(word[track])
+#						break
+#					elif word[track] in vowels:
+#						tmp.append(word[j:(track+1)])
+ #                                       	break
+		syllables.append(tmp) 
 	return syllables 
 
 
