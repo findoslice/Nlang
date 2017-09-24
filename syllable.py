@@ -14,7 +14,8 @@ def syllabify(word):
 						if word[k] in vowels:
 							tmp.append(word[:k])
 							break
-						else:
+						elif k == len(word) - 1:
+							tmp.append(word)
 							pass	
 
 
