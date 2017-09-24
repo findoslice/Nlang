@@ -1,11 +1,26 @@
+
 def syllabify(word):
 	syllables = []
 	vowels = 'aeiouy'
 	words = word.lower().strip('.:?!').split(" ")
         for i in range(0, len(words)):
                 tmp = []
-		track = 0
                 word = words[i]
+		for j in range(0, len(word)):
+			if word[j] in vowels:
+                        	track = j + 1
+                        	while word[track] not in vowels:
+                                	track = track +  1
+                                	print track
+                                	if track == len(word)-1 and word[track] in vowels:
+						tmp.append(word[track])
+						break
+					elif word[track] in vowels:
+						tmp.append(word[j:(track+1)])
+                                        	break
+
+
+
                 if word[0] in vowels:
 			track += 1
 			while word[track] not in vowels:
