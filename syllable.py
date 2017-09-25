@@ -1,7 +1,8 @@
 #natural language processing update
 def syllabify(word):
 	syllables = []
-	vowels = 'aeiouy'
+	vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+	diphthongs = ['ai', 'ae', 'ay','au']
 	words = word.lower().strip('.:?!').split(" ")
 	for i in range(0, len(words)):
     		tmp = []
@@ -9,17 +10,40 @@ def syllabify(word):
 		track = 0
 		if word[0] not in vowels:						#check if first letter isn't a vowel, this requires special case
 			for j in range (len(word)):
+				if word[j] in vowels and word[j:j+1] in diphthongs:
+					for k in range(j+2, len(word)):                 #takes first syllable to be first vowel and all surrounding consonats 
+                                                if word[k] in vowels:
+                                                        track = k
+                                                        tmp.append(word[:k+1])
+                                                        break
+
+                                                elif (k == len(word) - 1) and tmp == []:                #in case word is monosyllabic and has only one vowel
+                                                        tmp.append(word)
+                                                        pass
+                                        break
 				if word[j] in vowels:
-					for k in range(j+1, len(word)):			#takes first syllable to be first vowel and all surrounding consonants
+					for k in range(j+1, len(word)):			#takes first syllable to be first vowel and all surrounding consonats
 						if word[k] in vowels:
 							track = k
 							tmp.append(word[:k])
 							break
+						
 						elif (k == len(word) - 1) and tmp == []:		#in case word is monosyllabic and has only one vowel
 							tmp.append(word)
 							pass
 					break
 			for j in range(track, len(word)):
+				if word[j] in vowels and word[j:j+1] in diphthongs:
+                                        for k in range(j+2, len(word)):                 
+                                                if word[k] in vowels:
+                                                        track = k
+                                                        tmp.append(word[track:k])
+                                                        break
+						elif (k == len(word) - 1): 
+                                                        tmp.append(word[track:])
+                                                        pass
+                                        #break
+
 				if word[j] in vowels:
 					for k in range(j+1, len(word)):
 						if word[k] in vowels:
@@ -29,7 +53,7 @@ def syllabify(word):
 						elif k == len(word) - 1:
 							tmp.append(word[track:])
 							pass
-
+					#break
 
 		syllables.append(tmp)
 	return syllables
