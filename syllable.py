@@ -18,7 +18,7 @@ def syllabify(word):
                                                         break
 
                                                 elif (k == len(word) - 1) and tmp == []:                #in case word is monosyllabic and has only one vowel
-                                                        tmp.append(word)
+                                                       # tmp.append(word)
                                                         pass
                                         break
 				if word[j] in vowels:
@@ -29,7 +29,7 @@ def syllabify(word):
 							break
 						
 						elif (k == len(word) - 1) and tmp == []:		#in case word is monosyllabic and has only one vowel
-							tmp.append(word)
+							#tmp.append(word)
 							pass
 					break
 			for j in range(track, len(word)):
