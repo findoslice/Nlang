@@ -16,10 +16,6 @@ def syllabify(word):
                                                         track = k
                                                         tmp.append(word[:k+1])
                                                         break
-
-                                                elif (k == len(word) - 1) and tmp == []:                #in case word is monosyllabic and has only one vowel
-                                                       # tmp.append(word)
-                                                        pass
                                         break
 				if word[j] in vowels:
 					for k in range(j+1, len(word)):			#takes first syllable to be first vowel and all surrounding consonats
@@ -27,10 +23,6 @@ def syllabify(word):
 							track = k
 							tmp.append(word[:k])
 							break
-						
-						elif (k == len(word) - 1) and tmp == []:		#in case word is monosyllabic and has only one vowel
-							#tmp.append(word)
-							pass
 					break
 			for j in range(track, len(word)):
 				if word[j] in vowels and word[j:j+1] in diphthongs:
